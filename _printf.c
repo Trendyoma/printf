@@ -9,16 +9,23 @@
 
 int _printf(const char *format, ...)
 {
-	char c;
+	int c;
 	int count = 0;
-
 	va_list list_format;
+
 	va_start(list_format, format);
 	if (format == NULL)
-		exit (-1);
+		exit(-1);
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format != '%')
+                {
+			putchar(*format);
+			count++;
+			format++;
+		}
+
+		else
 		{
 			format++;
 			if (*format == '\0')
@@ -26,31 +33,21 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(list_format, int);
-				write(1, &c, 1);
-				count++;
+					my_put(c);
+					count++;
 			}
 			if (*format == 's')
 			{
 				char *str = va_arg(list_format, char *);
-				while (*str != '\0')
-				{
-					putchar(*str);
-					str++;
-					count++;
-				}
+				string_lit(str);
+				count++;
 			}
 			if (*format == '%')
 			{
-				write(1, format, 1);
+				putchar('%');
 			}
 			format++;
 		}
-		else
-		{
-			putchar(*format);
-                        count++;
-                }
-		format++;
 	}
 	va_end(list_format);
 	return (count);
