@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(list_format, int);
-				write(1, &c, sizeof(c));
+				write(1, &c, 1);
 				count += count;
 			}
 			else if (*format == 's')
@@ -42,8 +42,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == '%')
 			{
-				write(1, format, sizeof(*format));
-				count++;
+				count += write(1, format, 1);
 			}
 		}
 		format++;
