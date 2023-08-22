@@ -14,16 +14,17 @@ int _printf(const char *format, ...)
 
 	va_start(list_format, format);
 	if (format == NULL)
+	{
+		va_end(list_format);
 		exit(-1);
+	}
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			putchar(*format);
+			write(1, format, 1);
 			count++;
-			format++;
 		}
-
 		else
 		{
 			format++;
@@ -35,17 +36,20 @@ int _printf(const char *format, ...)
 					my_put(c);
 					count++;
 			}
-			if (*format == 's')
+			else if (*format == 's')
 			{
 				char *str = va_arg(list_format, char *);
 
 				string_lit(str);
+				count ++;
+			}
+			else if (*format == '%')
+			{
+				write(1, format, 1);
 				count++;
 			}
-			if (*format == '%')
-				putchar('%');
-			format++;
 		}
+		format++;
 	}
 	va_end(list_format);
 	return (count);
