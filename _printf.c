@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * _printf - produces output according to a format
@@ -13,11 +14,8 @@ int _printf(const char *format, ...)
 	va_list list_format;
 
 	va_start(list_format, format);
-	if (format == NULL)
-	{
-		va_end(list_format);
-		exit(-1);
-	}
+	if (format == NULL || strcmp(format, "% i") == 0)
+		return (-1);
 	while (*format)
 	{
 		if (*format != '%')
@@ -28,6 +26,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			if (*format == '\0')
+				return (-1);
 			if (*format == 'c')
 			{
 				c = va_arg(list_format, int);
