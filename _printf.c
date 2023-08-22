@@ -40,8 +40,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == '%')
 			{
-				write(1, format, 1);
-				count++;
+				count += write(1, format, 1);
 			}
 		}
 		format++;
