@@ -9,8 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int c;
-	int count = 0;
+	int c, count = 0;
 	va_list list_format;
 
 	va_start(list_format, format);
@@ -19,7 +18,7 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-                {
+		{
 			putchar(*format);
 			count++;
 			format++;
@@ -39,13 +38,12 @@ int _printf(const char *format, ...)
 			if (*format == 's')
 			{
 				char *str = va_arg(list_format, char *);
+
 				string_lit(str);
 				count++;
 			}
 			if (*format == '%')
-			{
 				putchar('%');
-			}
 			format++;
 		}
 	}
