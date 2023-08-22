@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 				char *str = va_arg(list_format, char *);
 
 				string_lit(str);
-				count ++;
+				count++;
 			}
 			else if (*format == '%')
 			{

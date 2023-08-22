@@ -8,7 +8,7 @@ void string_lit(char *str)
 {
 	while (*str != '\0')
 	{
-		putchar(*str);
+		write(1, str, 1);
 		str++;
 	}
 }

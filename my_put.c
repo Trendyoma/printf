@@ -5,10 +5,7 @@
  * @a: variable of the character
  * Return: 1 on success
  */
-int my_put(char a)
+void my_put(char a)
 {
-	int d;
-
-	d = putchar(a);
-	return (d);
+	write(1, &a, 1);
 }
