@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(list_format, int);
-				write(1, &c, 1);
+				write(1, &c, sizeof(c));
 				count++;
 			}
 			else if (*format == 's')
