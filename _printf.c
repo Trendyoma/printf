@@ -1,13 +1,10 @@
 #include "main.h"
-#include <string.h>
-
 /**
  * _printf - produces output according to a format
  * @format: parameter
  * ...: ellipsis
  * Return: number of characters printed
  */
-
 int _printf(const char *format, ...)
 {
 	int c, count = 0;
