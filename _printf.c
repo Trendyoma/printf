@@ -17,8 +17,6 @@ int _printf(const char *format, ...)
 		exit(-1);
 	while (*format)
 	{
-		if (*format == '\0')
-                        break;
 		if (*format != '%')
 		{
 			putchar(*format);
@@ -29,6 +27,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			if (*format == '\0')
+				break;
 			if (*format == 'c')
 			{
 				c = va_arg(list_format, int);
