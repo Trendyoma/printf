@@ -43,7 +43,10 @@ int _printf(const char *format, ...)
 				count++;
 			}
 			if (*format == '%')
+			{
 				putchar('%');
+				count++;
+			}
 			format++;
 		}
 	}
