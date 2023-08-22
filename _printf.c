@@ -48,11 +48,6 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				count++;
 			}
-			if (*format == '%')
-			{
-				putchar('%');
-				count++;
-			}
 		}
 		format++;
 	}
