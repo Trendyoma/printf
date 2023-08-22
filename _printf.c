@@ -14,10 +14,10 @@ int _printf(const char *format, ...)
 	va_list list_format;
 
 	va_start(list_format, format);
-	if (format == NULL || strcmp(format, "% i") == 0)
-		return (-1);
 	while (*format)
 	{
+		if (format == NULL || strcmp(format, "% i") == 0)
+                return (-1);
 		if (*format != '%')
 		{
 			write(1, format, 1);
@@ -31,8 +31,8 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(list_format, int);
-					write(1, &c, 1);;
-					count++;
+				write(1, &c, 1);;
+				count++;
 			}
 			else if (*format == 's')
 			{
