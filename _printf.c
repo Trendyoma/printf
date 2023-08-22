@@ -14,10 +14,10 @@ int _printf(const char *format, ...)
 	va_list list_format;
 
 	va_start(list_format, format);
+	if (format == NULL || strcmp(format, "% i") == 0)
+                return (-1);
 	while (*format)
 	{
-		if (format == NULL || strcmp(format, "% i") == 0)
-                return (-1);
 		if (*format != '%')
 		{
 			write(1, format, 1);
@@ -37,9 +37,8 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				char *str = va_arg(list_format, char *);
-
-				string_lit(str);
-				count++;
+				write(1, str, strlen(str));
+				count += strlen(str);
 			}
 			else if (*format == '%')
 			{
