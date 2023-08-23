@@ -2,10 +2,10 @@
 #include <stdio.h>
 /**
  * my_put - function to print a character
- * @a: variable of the character
+ * @c: variable of the character
  * Return: 1 on success
  */
-void my_put(char a)
+int my_putch(char c)
 {
-	write(1, &a, 1);
+	return (write(1, &c, 1));
 }
