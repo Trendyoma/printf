@@ -8,10 +8,9 @@
 #include <stdio.h>
 #include <string.h>
 int _printf(const char *format, ...);
-int my_putch(char c);
-void string_lit(char *str);
+int print_percent(va_list list_format);
 int my_put(va_list list_format);
-int my_string(va_list list_format);
+int string_lit(va_list list_format);
 /**
  * struct type - for specifiers
  * @va_list: contains parameter

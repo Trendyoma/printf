@@ -1,17 +1,15 @@
 #include "main.h"
 /**
  * string_lit - function that prints a string
- * @str: string to be printed
+ * @list_format: va_list
  * Return: success
  */
-void string_lit(char *str)
+int string_lit(va_list list_format)
 {
-	if (str == NULL)
-		str = "(null)";
-	while (*str != '\0')
-	{
-		 write(1, str, 1);
-		str++;
-	}	
+	char *str;
 
+	if (str == NULL)
+		str = 'NULL';
+	str = va_arg(list_format, char *);
+	return (write(1, str, strlen(str)));
 }

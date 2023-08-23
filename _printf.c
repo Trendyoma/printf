@@ -7,8 +7,6 @@
  */
 int _printf(const char *format, ...)
 {
-	int c, count = 0;
-	char *str;
 	va_list list_format;
 
 	va_start(list_format, format);
