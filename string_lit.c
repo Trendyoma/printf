@@ -6,9 +6,12 @@
  */
 void string_lit(char *str)
 {
+	if (str == NULL)
+		str = "(null)";
 	while (*str != '\0')
 	{
-		write(1, str, 1);
+		 write(1, str, 1);
 		str++;
-	}
+	}	
+
 }
