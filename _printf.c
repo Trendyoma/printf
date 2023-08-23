@@ -34,8 +34,8 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				str = va_arg(list_format, char *);
-				write(1, str, strlen(str));
-				count += strlen(str);
+				string_lit(str);
+				count++;
 			}
 			else if (*format == '%')
 			{
