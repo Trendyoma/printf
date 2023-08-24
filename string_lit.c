@@ -6,10 +6,9 @@
  */
 int string_lit(va_list list_format)
 {
-	char *str;
+	char *str = va_arg(list_format, char *);
 
 	if (str == NULL)
-		str = 'NULL';
-	str = va_arg(list_format, char *);
+		str = "NULL";
 	return (write(1, str, strlen(str)));
 }

@@ -7,13 +7,22 @@
  */
 int _printf(const char *format, ...)
 {
+	sp specifiers[] = {
+		{'c', my_put},
+		{'s', string_lit},
+		{'%', print_percent}
+	};
+	int count = 0;
 	va_list list_format;
+	int i;
 
 	va_start(list_format, format);
 	if (format == NULL || strcmp(format, "% ") == 0)
 		return (-1);
 	while (*format)
 	{
+		if (*format == '\0')
+			return (-1);
 		if (*format != '%')
 		{
 			write(1, format, 1);
@@ -22,26 +31,20 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '\0')
-				return (-1);
-			if (*format == 'c')
+			for (i = 0; i < (int)(sizeof(specifiers) / sizeof(specifiers[0])); i++)
 			{
-				c = va_arg(list_format, int);
-				count += write(1, &c, 1);
+				if (specifiers[i].spec == *format)
+				{
+					count += specifiers[i].f(list_format);
+					break;
+				}
 			}
-			else if (*format == 's')
-			{
-				str = va_arg(list_format, char *);
-				string_lit(str);
-				count++;
-			}
-			else if (*format == '%')
-			{
-				count += write(1, format, 1);
-			}
+			if (i == sizeof(specifiers) / sizeof(specifiers[0]))
+				count += write(1, format - 1, 2);
 		}
 		format++;
 	}
 	va_end(list_format);
 	return (count);
 }
+

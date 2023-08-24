@@ -13,13 +13,13 @@ int my_put(va_list list_format);
 int string_lit(va_list list_format);
 /**
  * struct type - for specifiers
- * @va_list: contains parameter
+ * @spec: contains parameter
  * @f: funtction pointer to specifiers
  *
  */
 typedef struct type
 {
-	char *spec;
+	char spec;
 	int (*f)(va_list);
-}sp;
+} sp;
 #endif
