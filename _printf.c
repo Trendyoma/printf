@@ -8,10 +8,10 @@
 int _printf(const char *format, ...)
 {
 	op_t specifiers[] = {
-        {'c', my_put},
-        {'s', string_lit},
-        {'%', print_percent}
-};
+		{'c', my_put},
+		{'s', string_lit},
+		{'%', print_percent}
+	};
 	int count = 0;
 	va_list list_format;
 	int i;

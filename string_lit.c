@@ -9,6 +9,8 @@ int string_lit(va_list list_format)
 	char *str = va_arg(list_format, char *);
 
 	if (str == NULL)
-		str = "NULL";
+		str = "(null)";
+	if (str == '\0')
+		break;
 	return (write(1, str, strlen(str)));
 }
