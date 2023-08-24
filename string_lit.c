@@ -10,7 +10,7 @@ int string_lit(va_list list_format)
 
 	if (str == NULL)
 		str = "(null)";
-	if (str == '\0')
-		break;
+	if (*str == '\0')
+		exit (-1);
 	return (write(1, str, strlen(str)));
 }
