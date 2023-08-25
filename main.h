@@ -18,6 +18,7 @@ typedef struct type
 	char spec;
 	int (*f)(va_list);
 } op_t;
+int function(const char *format, va_list list_format);
 int _printf(const char *format, ...);
 int print_percent(va_list list_format);
 int my_put(va_list list_format);
