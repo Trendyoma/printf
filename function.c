@@ -11,7 +11,9 @@ int function(const char *format, va_list list_format)
 	op_t specifiers[] = {
 		{'c', my_put},
 		{'s', string_lit},
-		{'%', print_percent}
+		{'%', print_percent},
+		{'d', print_number},
+		{'i', print_number}
 	};
 	while (*format)
 	{

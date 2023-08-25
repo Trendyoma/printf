@@ -23,4 +23,5 @@ int _printf(const char *format, ...);
 int print_percent(va_list list_format);
 int my_put(va_list list_format);
 int string_lit(va_list list_format);
+int print_number(va_list list_format);
 #endif
